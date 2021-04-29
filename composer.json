@@ -1,0 +1,12 @@
+{
+    "name": "kingdutch/phpstan-repro",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Varwijk",
+            "email": "alexander@getopensocial.com"
+        }
+    ],
+    "require": {}
+}
