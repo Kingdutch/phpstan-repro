@@ -1,0 +1,130 @@
+<?php
+
+namespace React\Promise {
+
+  interface PromiseInterface { }
+
+  interface CancellablePromiseInterface extends PromiseInterface {
+
+    /**
+     * @param callable|null $onFulfilled
+     * @param callable|null $onRejected
+     * @param callable|null $onProgress
+     *
+     * @return \React\Promise\CancellablePromiseInterface
+     */
+    public function then(callable $onFulfilled = NULL, callable $onRejected = NULL, callable $onProgress = NULL);
+  }
+
+  interface ExtendedPromiseInterface extends PromiseInterface {
+
+    /**
+     * @param callable|null $onFulfilled
+     * @param callable|null $onRejected
+     * @param callable|null $onProgress
+     *
+     * @return \React\Promise\ExtendedPromiseInterface
+     */
+    public function then(callable $onFulfilled = null, callable $onRejected = null, callable $onProgress = null) : self;
+
+  }
+
+  class Promise implements ExtendedPromiseInterface, CancellablePromiseInterface {
+
+    /**
+     * @return void
+     */
+    public function cancel() {
+      // TODO: Implement cancel() method.
+    }
+
+    /**
+     * @param callable|null $onFulfilled
+     * @param callable|null $onRejected
+     * @param callable|null $onProgress
+     *
+     * @return void
+     */
+    public function done(callable $onFulfilled = NULL, callable $onRejected = NULL, callable $onProgress = NULL) {
+      // TODO: Implement done() method.
+    }
+
+    /**
+     * @param callable $onRejected
+     *
+     * @return \React\Promise\Promise
+     */
+    public function otherwise(callable $onRejected) {
+      // TODO: Implement otherwise() method.
+    }
+
+    /**
+     * @param callable $onFulfilledOrRejected
+     *
+     * @return \React\Promise\Promise
+     */
+    public function always(callable $onFulfilledOrRejected) {
+      // TODO: Implement always() method.
+    }
+
+    /**
+     * @param callable $onProgress
+     *
+     * @return \React\Promise\Promise
+     */
+    public function progress(callable $onProgress) {
+      // TODO: Implement progress() method.
+    }
+
+    /**
+     * @param callable|null $onFulfilled
+     * @param callable|null $onRejected
+     * @param callable|null $onProgress
+     *
+     * @return \React\Promise\Promise
+     */
+    public function then(callable $onFulfilled = NULL, callable $onRejected = NULL, callable $onProgress = NULL): ExtendedPromiseInterface {
+      // TODO: Implement then() method.
+    }
+  }
+
+
+  /**
+   * @param mixed $promiseOrValue
+   *
+   * @return \React\Promise\ExtendedPromiseInterface
+   */
+  function resolve($promiseOrValue) : ExtendedPromiseInterface { }
+
+  /**
+   * @param mixed $promisesOrValues
+   *
+   * @return \React\Promise\ExtendedPromiseInterface
+   */
+  function all($promisesOrValues) : ExtendedPromiseInterface { }
+
+}
+
+namespace React\Stream {
+  interface ReadableStreamInterface {}
+}
+
+namespace React\Http {
+
+  use React\Promise\ExtendedPromiseInterface;
+  use React\Stream\ReadableStreamInterface;
+
+  class Browser {
+
+    /**
+     * @param string $url
+     * @param array<string,string|array<string>> $headers
+     * @param string|ReadableStreamInterface $contents
+     *
+     * @return \React\Promise\ExtendedPromiseInterface
+     */
+    public function post(string $url, array $headers = array(), $contents = '') : ExtendedPromiseInterface {}
+
+  }
+}
+
